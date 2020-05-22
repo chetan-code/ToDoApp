@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.backbench.todoapp.edit.AddFragment"
+        android:name="com.backbench.todoapp.add.AddFragment"
         android:label="AddFragment" >
         <action
             android:id="@+id/action_addFragment_to_mainFragment"

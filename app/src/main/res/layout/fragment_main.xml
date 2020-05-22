@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="mainViewModel"
+            type="com.backbench.todoapp.main.MainViewModel"
+            />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -14,13 +17,14 @@
         >
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/todo_recyclerView"
+            android:id="@+id/todoList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             tools:itemCount="5"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_item_todo" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,6 +35,7 @@
             android:layout_margin="@dimen/fab_margin"
             app:backgroundTint="@color/colorPrimary"
             app:fabSize="normal"
+            android:onClick="@{() -> mainViewModel.NavigateToAdd()}"
             app:maxImageSize="32dp"
             app:rippleColor="@color/colorAccent"
             app:srcCompat="@drawable/ic_add_black_24dp" />
