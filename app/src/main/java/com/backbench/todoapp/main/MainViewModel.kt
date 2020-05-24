@@ -51,6 +51,19 @@ class MainViewModel(
         }
     }
 
+    fun deleteTodoTask(todoId: Long){
+        uiScope.launch {
+            deleteById(todoId)
+        }
+    }
+
+    private suspend fun deleteById(todoId: Long){
+        withContext(Dispatchers.IO){
+            database.deleteTodoByKey(todoId)
+        }
+    }
+
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()

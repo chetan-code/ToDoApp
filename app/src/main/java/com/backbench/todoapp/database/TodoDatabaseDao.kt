@@ -20,4 +20,8 @@ interface TodoDatabaseDao{
 
     @Query("SELECT * FROM todo_table WHERE todoId = :key")
     fun getTodo(key : Long) : Todo?
+
+    @Query("DELETE FROM todo_table WHERE todoId = :key")
+    fun deleteTodoByKey(key :Long)
+
 }

@@ -7,20 +7,21 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.backbench.todoapp.R
 import com.backbench.todoapp.database.Todo
+import com.google.android.material.checkbox.MaterialCheckBox
+import com.google.android.material.chip.Chip
 
 
 //this class help us bind xml(List_item_todo) to classTodo
 //we create simple extend view
 
 @BindingAdapter("setPriority")
-fun ImageView.setPriority(item: Todo?){
+fun Chip.setPriority(item: Todo?){
     item?.let {
-        setImageResource(when(item.priority){
-            0 -> R.drawable.ic_solid_circle_1_green_24dp
-            1 -> R.drawable.ic_solid_circle_1_yellow_24dp
-            2 -> R.drawable.ic_solid_circle_1_red_24dp
-            else -> R.drawable.ic_solid_circle_1_black_24dp
-        })
+        text = when(item.priority){
+            0 -> "CASUAL"
+            1 -> "IMPORTANT"
+            else -> "URGENT"
+        }
     }
 }
 
@@ -32,7 +33,7 @@ fun TextView.setMainText(item:Todo?){
 }
 
 @BindingAdapter("setStatus")
-fun RadioButton.setStatus(item : Todo?){
+fun MaterialCheckBox.setStatus(item : Todo?){
     item?.let{
         isChecked = item.status
     }

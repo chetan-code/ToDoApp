@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".main.MainFragment"
+        android:background="@color/black"
         >
 
         <androidx.recyclerview.widget.RecyclerView
@@ -33,11 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            app:backgroundTint="@color/colorPrimary"
+            android:background="@color/white"
             app:fabSize="normal"
             android:onClick="@{() -> mainViewModel.NavigateToAdd()}"
             app:maxImageSize="32dp"
-            app:rippleColor="@color/colorAccent"
             app:srcCompat="@drawable/ic_add_black_24dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

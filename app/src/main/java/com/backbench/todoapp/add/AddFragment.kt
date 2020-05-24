@@ -64,21 +64,21 @@ class AddFragment : Fragment() {
             0 -> {
                 with(binding) {
                     lowButton.setBackgroundColor(resources.getColor(R.color.green))
-                    mediumButton.setBackgroundColor(resources.getColor(R.color.design_default_color_background))
-                    highButton.setBackgroundColor(resources.getColor(R.color.design_default_color_background))
+                    mediumButton.setBackgroundColor(resources.getColor(R.color.colorPrimary))
+                    highButton.setBackgroundColor(resources.getColor(R.color.colorPrimary))
                 }
             }
             1 -> {
                 with(binding) {
-                    lowButton.setBackgroundColor(resources.getColor(R.color.design_default_color_background))
+                    lowButton.setBackgroundColor(resources.getColor(R.color.colorPrimary))
                     mediumButton.setBackgroundColor(resources.getColor(R.color.yellow))
-                    highButton.setBackgroundColor(resources.getColor(R.color.design_default_color_background))
+                    highButton.setBackgroundColor(resources.getColor(R.color.colorPrimary))
                 }
             }
             2 -> {
                 with(binding) {
-                    lowButton.setBackgroundColor(resources.getColor(R.color.design_default_color_background))
-                    mediumButton.setBackgroundColor(resources.getColor(R.color.design_default_color_background))
+                    lowButton.setBackgroundColor(resources.getColor(R.color.colorPrimary))
+                    mediumButton.setBackgroundColor(resources.getColor(R.color.colorPrimary))
                     highButton.setBackgroundColor(resources.getColor(R.color.red))
                 }
             }

@@ -39,6 +39,8 @@ class MainFragment : Fragment() {
 
         val adapter = TodoAdapter(TodoListener {
             mainViewModel.updateStatus(it)
+        }, DeleteListener{
+            mainViewModel.deleteTodoTask(it)
         })
         binding.todoList.adapter = adapter
 
