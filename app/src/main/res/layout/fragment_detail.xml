@@ -4,31 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="detailViewModel"
+            type="com.backbench.todoapp.detail.DetailViewModel" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".detail.DetailFragment">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="10dp">
 
-        <TextView
-            android:id="@+id/textview_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/button_second" />
 
-        <Button
-            android:id="@+id/button_second"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/previous"
-            app:layout_constraintTop_toBottomOf="@id/textview_second"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:padding="30dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/domine"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:text="@{detailViewModel.currentTodo.mainText}"
+                tools:text="Call Maya and fix meeting with a new client." />
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="4sp"
+                app:setPriority="@{detailViewModel.currentTodo}"
+                app:setChipColor="@{detailViewModel.currentTodo}"
+                app:chipBackgroundColor="@color/red"
+                tools:text="IMPORTANT" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{detailViewModel.currentTodo.detailText}"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+
+                android:layout_marginTop="@dimen/medium_space"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:setFormattedTime="@{detailViewModel.currentTodo.timeCreated}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+
+                android:layout_marginTop="@dimen/medium_space"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

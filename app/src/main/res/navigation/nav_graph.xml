@@ -30,5 +30,8 @@
         <action
             android:id="@+id/action_detailFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="todoKey"
+            app:argType="long" />
     </fragment>
 </navigation>

@@ -11,7 +11,7 @@ import com.backbench.todoapp.databinding.FragmentAddBinding
 import com.backbench.todoapp.databinding.ListItemTodoBinding
 import com.backbench.todoapp.generated.callback.OnClickListener
 
-class TodoAdapter(val clickListener: TodoListener, val deleteListener: DeleteListener) : ListAdapter<Todo,TodoAdapter.ViewHolder>(TodoDiffCallback()){
+class TodoAdapter(val clickListener: TodoListener, val deleteListener: DeleteListener, val detailListener: DetailListener) : ListAdapter<Todo,TodoAdapter.ViewHolder>(TodoDiffCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -20,17 +20,18 @@ class TodoAdapter(val clickListener: TodoListener, val deleteListener: DeleteLis
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val todoItem = getItem(position)
-        holder.bind(todoItem, clickListener, deleteListener)
+        holder.bind(todoItem, clickListener, deleteListener, detailListener)
     }
 
     //ViewHolder
     class ViewHolder private constructor(val binding: ListItemTodoBinding) : RecyclerView.ViewHolder(binding.root){
 
         //onBindViewHolder logic inside viewholder
-        fun bind(item : Todo, clickListener: TodoListener, deleteListener: DeleteListener){
+        fun bind(item : Todo, clickListener: TodoListener, deleteListener: DeleteListener, detailListener: DetailListener){
             binding.todo = item
             binding.clickListener = clickListener
             binding.deleteClickListener = deleteListener
+            binding.detailClickListener = detailListener
             binding.executePendingBindings()
         }
 
@@ -52,6 +53,10 @@ class TodoListener(val clickListener: (sleepId : Long) -> Unit){
 }
 
 class DeleteListener(val clickListener: (sleepId : Long) -> Unit){
+    fun onClick(todo : Todo) = clickListener(todo.todoId)
+}
+
+class DetailListener(val clickListener: (sleepId : Long) -> Unit){
     fun onClick(todo : Todo) = clickListener(todo.todoId)
 }
 

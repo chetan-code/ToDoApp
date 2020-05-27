@@ -1,5 +1,6 @@
 package com.backbench.todoapp.main
 
+import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.widget.ImageView
 import android.widget.RadioButton
@@ -9,10 +10,21 @@ import com.backbench.todoapp.R
 import com.backbench.todoapp.database.Todo
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.chip.Chip
+import java.text.SimpleDateFormat
 
 
 //this class help us bind xml(List_item_todo) to classTodo
 //we create simple extend view
+
+@SuppressLint("SimpleDateFormat")
+@BindingAdapter("setFormattedTime")
+fun TextView.convertLongToDateString(systemTime: Long?){
+    systemTime?.let {
+        text = SimpleDateFormat("hh:mm a \ndd/mm/yyyy '('EEEE')'")
+                      .format(systemTime).toString()
+    }
+}
+
 
 @BindingAdapter("setPriority")
 fun Chip.setPriority(item: Todo?){
@@ -36,6 +48,17 @@ fun TextView.setMainText(item:Todo?){
 fun MaterialCheckBox.setStatus(item : Todo?){
     item?.let{
         isChecked = item.status
+    }
+}
+
+@BindingAdapter("setChipColor")
+fun Chip.setChipColor(item: Todo?){
+    item?.let{
+        setChipBackgroundColorResource( when(item.priority){
+            0 -> R.color.green
+            1 -> R.color.yellow
+            else -> R.color.red
+        })
     }
 }
 

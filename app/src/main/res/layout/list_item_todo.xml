@@ -14,6 +14,10 @@
             type="com.backbench.todoapp.main.DeleteListener" />
 
         <variable
+            name="detailClickListener"
+            type="com.backbench.todoapp.main.DetailListener" />
+
+        <variable
             name="clickListener"
             type="com.backbench.todoapp.main.TodoListener" />
     </data>
@@ -75,15 +79,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textColor="#000000"
+                android:textColor="@color/white"
                 android:textSize="4sp"
-                app:chipBackgroundColor="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/main_textView"
                 app:layout_constraintTop_toBottomOf="@+id/main_textView"
                 app:setPriority="@{todo}"
+                app:setChipColor="@{todo}"
                 tools:text="IMPORTANT" />
 
             <ImageButton
@@ -113,6 +117,7 @@
                 android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 android:clickable="true"
+                android:onClick="@{() -> detailClickListener.onClick(todo)}"
                 app:layout_constraintBottom_toBottomOf="@+id/chip2"
                 app:layout_constraintEnd_toEndOf="@+id/main_textView"
                 app:layout_constraintHorizontal_bias="0.0"

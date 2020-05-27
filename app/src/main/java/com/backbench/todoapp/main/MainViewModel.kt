@@ -19,6 +19,8 @@ class MainViewModel(
 
     val todos : LiveData<List<Todo>> = database.getAllTodos()
 
+    var currentTodoKey : Long = 0
+
     private val _navigateToAdd = MutableLiveData<Boolean>()
     val navigateToAdd: LiveData<Boolean>
         get() = _navigateToAdd
@@ -26,14 +28,27 @@ class MainViewModel(
     fun NavigateToAdd() {
         _navigateToAdd.value = true
     }
-
     fun doneNavigatingToAdd() {
         _navigateToAdd.value = false
     }
 
 
+    private val _navigateToDetail = MutableLiveData<Boolean>()
+    val navigateToDetail: LiveData<Boolean>
+        get() = _navigateToDetail
+
+    fun navigateToDetail(todoKey : Long){
+        currentTodoKey = todoKey
+        _navigateToDetail.value = true
+    }
+
+    fun doneNavigatingToDetail(){
+        _navigateToDetail.value = false
+    }
+
     init {
         _navigateToAdd.value = false
+        _navigateToDetail.value = false
     }
 
 

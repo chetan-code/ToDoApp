@@ -41,6 +41,8 @@ class MainFragment : Fragment() {
             mainViewModel.updateStatus(it)
         }, DeleteListener{
             mainViewModel.deleteTodoTask(it)
+        }, DetailListener {
+            mainViewModel.navigateToDetail(it)
         })
         binding.todoList.adapter = adapter
 
@@ -55,6 +57,12 @@ class MainFragment : Fragment() {
             }
         })
 
+        mainViewModel.navigateToDetail.observe(this,Observer{
+            if(it == true){
+                this.findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(mainViewModel.currentTodoKey))
+                mainViewModel.doneNavigatingToDetail()
+            }
+        })
 
 
         return binding.root
